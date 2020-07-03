@@ -14,7 +14,8 @@
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "nuxt": "^2.13.0",
     "stylus": "^0.54.7",
-    "stylus-loader": "^3.0.2"
+    "stylus-loader": "^3.0.2",
+    "vuex-persist": "^2.2.0"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.11.2",

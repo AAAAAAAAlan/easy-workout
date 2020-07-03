@@ -38,6 +38,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    { src: '~/plugins/vuex-persist.js', ssr: false }
   ],
   /*
   ** Auto import components
