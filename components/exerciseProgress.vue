@@ -31,7 +31,7 @@ export default {
   },
   
   mounted () {
-    this.$store.dispatch('start');
+    // this.$store.dispatch('start'); инстанс времени, возможно понадобится в будущем
   },
 }
 </script>

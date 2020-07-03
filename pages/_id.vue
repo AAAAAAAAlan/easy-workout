@@ -20,7 +20,8 @@ export default {
   computed: {
     ...mapState({
       exerciseCount: state => state.exerciseCount
-    })
+    }),
+
   },
 
   methods: {
@@ -28,6 +29,7 @@ export default {
       this.$store.commit('addExercise', exercise)
     }
   },
+  
 }
 </script>
 

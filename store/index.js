@@ -9,19 +9,23 @@
   })
 
   export const mutations = {
-    updateTime (state) {
-      state.now = new Date
-    },
+    // инстанс времени, возможно понадобится в будущем
+    // updateTime (state) {
+    //   state.now = new Date
+    // },
 
     addExercise (state, exercise) {
-      state.exerciseCount[exercise]++
+      if(state.exerciseCount[exercise] >= 100){
+        state.exerciseCount[exercise] = 0
+      } state.exerciseCount[exercise]++
     }
   }
 
   export const actions = {
-    start ({ commit }) {
-      setInterval(() => {
-        commit('updateTime')
-      }, 60000)
-    }
+    // инстанс времени, возможно понадобится в будущем
+    // start ({ commit }) {
+    //   setInterval(() => {
+    //     commit('updateTime')
+    //   }, 60000)
+    // }
   }
