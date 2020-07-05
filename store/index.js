@@ -1,11 +1,14 @@
+  import moment from 'moment'
+
   export const state = () => ({
-    now: new Date,
 
     exerciseCount: {
       pullups: 0,
       situps: 0,
       pushups: 0
-    }
+    },
+
+    finishedExercises: []
   })
 
   export const mutations = {
@@ -15,7 +18,9 @@
     // },
 
     addExercise (state, exercise) {
+      let time = moment().format('MMM DD')
       if(state.exerciseCount[exercise] >= 100){
+        state.finishedExercises.push({ exercise, time })
         state.exerciseCount[exercise] = 0
       } state.exerciseCount[exercise]++
     }

@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "moment": "^2.27.0",
     "nuxt": "^2.13.0",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",

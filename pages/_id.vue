@@ -5,11 +5,22 @@
     <div class="text-center button">
       <v-btn @click="doExercise($route.params.id)" width="100%" x-large dark>DO EXERCISE</v-btn>
     </div>
+    <v-list>
+      <v-subheader>FEED</v-subheader>
+        <v-list-item
+          class="list-item"
+          v-for="(finishedExercise, i) in finishedExercises"
+          :key="i"
+        >
+          {{ `YOU\'VE DONE 100 ${finishedExercise.exercise} ON ${finishedExercise.time}` }}
+        </v-list-item>
+    </v-list>
   </div>
 </template>
 
 <script>
 import exerciseProgress from '~/components/exerciseProgress.vue'
+
 import { mapState } from 'vuex'
 
 export default {
@@ -17,17 +28,25 @@ export default {
     exerciseProgress,
   },
 
+  data() {
+    return {
+      completedExercises: [],
+    }
+  },
+
   computed: {
     ...mapState({
-      exerciseCount: state => state.exerciseCount
+      exerciseCount: state => state.exerciseCount,
+      finishedExercises: state => state.finishedExercises
     }),
-
   },
 
   methods: {
     doExercise(exercise) {
       this.$store.commit('addExercise', exercise)
-    }
+    },
+
+    
   },
   
 }
@@ -35,9 +54,12 @@ export default {
 
 <style lang="stylus">
 .button
-  margin-top 20px 
+  margin 20px 0
 
 .exercise-title
   margin-bottom 20px
+  text-transform uppercase
+
+.list-item
   text-transform uppercase
 </style>
