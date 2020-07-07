@@ -1,20 +1,27 @@
 <template>
   <div class="container">
-    <h1 class="exercise-title text-center">{{`now you're doing ${$route.params.id}`}}</h1>
-    <exerciseProgress :count="exerciseCount[$route.params.id]"/>
-    <div class="text-center button">
-      <v-btn @click="doExercise($route.params.id)" width="100%" x-large dark>DO EXERCISE</v-btn>
+
+    <div class="container-top">
+      <h1 class="exercise-title text-center">{{`now you're doing ${$route.params.id}`}}</h1>
+      <exerciseProgress :count="exerciseCount[$route.params.id]"/>
+      <div class="text-center button">
+        <v-btn @click="doExercise($route.params.id)" width="100%" x-large dark>DO EXERCISE</v-btn>
+      </div>
     </div>
-    <v-list>
-      <v-subheader>FEED</v-subheader>
-        <v-list-item
-          class="list-item"
-          v-for="(finishedExercise, i) in finishedExercises"
-          :key="i"
-        >
-          {{ `YOU\'VE DONE 100 ${finishedExercise.exercise} ON ${finishedExercise.time}` }}
-        </v-list-item>
-    </v-list>
+    
+    <div class="container-bottom">
+      <v-list rounded class="list">    
+        <v-subheader>FEED</v-subheader>
+          <v-list-item
+            class="list-item"
+            v-for="(finishedExercise, i) in finishedExercises"
+            :key="i"
+          >
+            {{ `YOU\'VE DONE 100 ${finishedExercise.exercise} ON ${finishedExercise.time}` }}
+          </v-list-item>
+      </v-list>
+    </div>
+
   </div>
 </template>
 
@@ -53,6 +60,8 @@ export default {
 </script>
 
 <style lang="stylus">
+
+
 .button
   margin 20px 0
 
@@ -60,6 +69,26 @@ export default {
   margin-bottom 20px
   text-transform uppercase
 
+  @media screen and (max-width: 600px)
+    font-size 15pt
+
+  @media screen and (max-width: 320px)
+    font-size 11pt
+
+.list
+  overflow-y scroll
+
 .list-item
   text-transform uppercase
+
+.container-top
+  max-height 53h
+
+.container-bottom
+  max-height 47vh
+  overflow-y scroll
+
+
+
+
 </style>
