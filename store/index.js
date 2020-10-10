@@ -8,29 +8,31 @@
       pushups: 0
     },
 
-    finishedExercises: []
+    finishedExercises: [],
+
+    selectedExercise: null,
+
   })
 
   export const mutations = {
-    // инстанс времени, возможно понадобится в будущем
-    // updateTime (state) {
-    //   state.now = new Date
-    // },
-
-    addExercise (state, exercise) {
+    ADD_EXERCISE (state, exercise) {
       let time = moment().format('MMM DD')
+
       if(state.exerciseCount[exercise] >= 100){
         state.finishedExercises.push({ exercise, time })
         state.exerciseCount[exercise] = 0
       } state.exerciseCount[exercise]++
-    }
-  }
+    },
 
-  export const actions = {
-    // инстанс времени, возможно понадобится в будущем
-    // start ({ commit }) {
-    //   setInterval(() => {
-    //     commit('updateTime')
-    //   }, 60000)
-    // }
+    SELECT_FINISHED_EXERCISE(state, i) {
+      state.selectedExercise = i
+    },
+
+    DELETE_FINISHED_EXERCISE(state) {
+      state.finishedExercises.splice(state.selectedExercise, 1)
+    },
+
+    DEBUG(state) {
+      state.exerciseCount.pullups = 99
+    }
   }
