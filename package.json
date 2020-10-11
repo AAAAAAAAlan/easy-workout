@@ -13,6 +13,7 @@
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/now-builder": "^0.17.3",
     "@nuxtjs/pwa": "^3.1.2",
+    "@nuxtjs/vuetify": "^1.11.2",
     "moment": "^2.29.1",
     "nuxt": "^2.14.6",
     "stylus": "^0.54.8",
