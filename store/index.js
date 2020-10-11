@@ -12,14 +12,16 @@
 
     selectedExercise: null,
 
+    selectedGoal: 100,
   })
 
   export const mutations = {
     ADD_EXERCISE (state, exercise) {
       let time = moment().format('MMM DD')
+      let selectedGoal = state.selectedGoal
 
-      if(state.exerciseCount[exercise] >= 100){
-        state.finishedExercises.push({ exercise, time })
+      if(state.exerciseCount[exercise] >= selectedGoal){
+        state.finishedExercises.push({ exercise, time, selectedGoal })
         state.exerciseCount[exercise] = 0
       } state.exerciseCount[exercise]++
     },
@@ -31,8 +33,8 @@
     DELETE_FINISHED_EXERCISE(state) {
       state.finishedExercises.splice(state.selectedExercise, 1)
     },
-
-    DEBUG(state) {
-      state.exerciseCount.pullups = 99
+    
+    SET_GOAL(state, x) {
+      state.selectedGoal = x
     }
   }

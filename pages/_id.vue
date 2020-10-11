@@ -2,14 +2,39 @@
   <div style="user-select: none" class="container">
 
     <div class="container-top">
-      <h1 @click="debug" class="exercise-title text-center">{{`now you're doing ${$route.params.id}`}}</h1>
+      <h1 class="exercise-title text-center">{{`now you're doing ${$route.params.id}`}}</h1>
       <exerciseProgress :count="exerciseCount[$route.params.id]"/>
+
+      <v-menu dark>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            class="goal-selection text-center"
+            width="100%"
+            style="margin-top: 20px"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            {{ `THE GOAL IS ${selectedGoal} ${$route.params.id}` }}
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item
+            v-for="(item, index) in items"
+            :key="index"
+            @click="setGoal(item.title)"
+          >
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
       <div class="text-center button">
         <v-btn @click="doExercise($route.params.id)" width="100%" x-large dark>DO EXERCISE</v-btn>
       </div>
     </div>
 
-    <div class="container-bottom">
+    <div fill-height class="container-bottom">
       <v-list rounded class="list">    
         <v-subheader>FEED</v-subheader>
           <v-list-item
@@ -19,7 +44,7 @@
             :key="i"
             @click="selectFinishedExercise(i)"
           >
-            {{ `YOU\'VE DONE 100 ${finishedExercise.exercise} ON ${finishedExercise.time}` }} 
+            {{ `YOU\'VE DONE ${finishedExercise.selectedGoal} ${finishedExercise.exercise} ON ${finishedExercise.time}` }} 
           </v-list-item>
       </v-list>
     </div>
@@ -55,16 +80,21 @@ export default {
 
   data() {
     return {
-      completedExercises: [],
       snackbar: false,
-      text: 'snackbar'
+      items: [
+        { title: 20 },
+        { title: 30 },
+        { title: 50 },
+        { title: 100 },
+      ],
     }
   },
 
   computed: {
     ...mapState({
       exerciseCount: state => state.exerciseCount,
-      finishedExercises: state => state.finishedExercises
+      finishedExercises: state => state.finishedExercises,
+      selectedGoal: state => state.selectedGoal
     }),
   },
 
@@ -82,9 +112,9 @@ export default {
       this.$store.commit('DELETE_FINISHED_EXERCISE')
       this.snackbar = false
     },
-
-    debug() {
-      this.$store.commit('DEBUG')
+    
+    setGoal(x) {
+      this.$store.commit('SET_GOAL', x)
     }
   },
   
@@ -105,26 +135,21 @@ export default {
 
 
 .container
-
   .container-top
     max-height 65vh
-
     .exercise-title
       margin-bottom 20px
       text-transform uppercase
-
     .button
       margin 20px 0
 
   .container-bottom
-    // max-height 35vh
-    // padding-bottom 80%
-    overflow-y scroll
-
+    .goal-selection
+      margin-top 20px
     .list
       overflow-y scroll
-      // overflow hidden
-
+      max-height 40vh
+      font-size 15px
       .list-item
         text-transform uppercase
 
