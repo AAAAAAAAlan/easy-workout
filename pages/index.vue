@@ -21,17 +21,25 @@ export default {
   data() {
     return {
       exercises: [
-        {link: '/pullups', icon: 'https://img.icons8.com/ios-filled/100/000000/pullups.png'},
-        {link: '/situps', icon: 'https://img.icons8.com/ios-glyphs/96/000000/sit-ups.png'},
-        {link: '/pushups', icon: 'https://img.icons8.com/ios-filled/100/000000/pushups.png'}
-      ]
-  }
-}
+        {
+          link: '/pullups',
+          icon: 'https://img.icons8.com/ios-filled/250/000000/pullups.png',
+        },
+        {
+          link: '/situps',
+          icon: 'https://img.icons8.com/ios-glyphs/250/000000/sit-ups.png',
+        },
+        {
+          link: '/pushups',
+          icon: 'https://img.icons8.com/ios-filled/250/000000/pushups.png',
+        },
+      ],
+    }
+  },
 }
 </script>
 
 <style lang="stylus" scoped>
-
   .container
     user-select none
     max-height 100vh
@@ -44,5 +52,4 @@ export default {
       cursor pointer
       user-select none
       -webkit-user-drag: none
-
 </style>
