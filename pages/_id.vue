@@ -1,6 +1,5 @@
 <template>
-  <div style="user-select: none" class="container">
-
+  <v-container class="app">
     <div class="container-top">
       <h1 class="exercise-title text-center">{{`now you're doing ${$route.params.id}`}}</h1>
       <exerciseProgress :count="exerciseCount[$route.params.id]"/>
@@ -64,8 +63,7 @@
         </v-btn>
       </template>
     </v-snackbar>
-
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -132,9 +130,8 @@ export default {
   .exercise-title
     font-size 11pt
 
-
-
-.container
+.app
+  user-select none
   .container-top
     max-height 65vh
     .exercise-title
@@ -152,7 +149,4 @@ export default {
       font-size 15px
       .list-item
         text-transform uppercase
-
-
-
 </style>
