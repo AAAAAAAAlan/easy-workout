@@ -5,10 +5,10 @@
       :rotate="360"
       :size="200"
       :width="30"
-      :value="count"
+      :value="scaledCount"
       color="white"
     >
-      {{count}}
+      {{ count }}
     </v-progress-circular>
   </v-card>
 </template>
@@ -17,10 +17,20 @@
 import { mapState } from 'vuex'
 
 export default {
+  name: 'exerciseProgress',
   props: {
     count: {
       type: Number,
     },
+  },
+  computed: {
+    ...mapState({
+      selectedGoal: state => state.selectedGoal
+    }),
+
+    scaledCount() {
+      return (100 / this.selectedGoal) * this.count
+    }
   },
 }
 </script>
