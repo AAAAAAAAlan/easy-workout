@@ -33,6 +33,10 @@ export default {
           link: '/pushups',
           icon: 'https://img.icons8.com/ios-filled/250/000000/pushups.png',
         },
+        {
+          link: '/squats',
+          icon: 'https://img.icons8.com/ios-filled/250/000000/squats.png',
+        },
       ],
     }
   },

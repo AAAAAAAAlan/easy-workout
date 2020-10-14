@@ -5,7 +5,8 @@
     exerciseCount: {
       pullups: 0,
       situps: 0,
-      pushups: 0
+      pushups: 0,
+      squats: 0,
     },
 
     finishedExercises: [],
